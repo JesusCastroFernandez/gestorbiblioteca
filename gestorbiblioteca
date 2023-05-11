@@ -1,0 +1,52 @@
+public class Libro {
+    private String titulo;
+    private String autor;
+    private String editorial;
+    private int añoPublicacion;
+    private String ISBN;
+    
+    // Constructores, getters y setters
+}
+---------------------------------------
+public class Biblioteca {
+    private ArrayList<Libro> libros;
+    
+    public Biblioteca() {
+        this.libros = new ArrayList<>();
+    }
+    
+    public void agregarLibro(Libro libro) {
+        this.libros.add(libro);
+    }
+    
+    public void eliminarLibro(Libro libro) {
+        this.libros.remove(libro);
+    }
+    
+    public Libro buscarLibro(String titulo) {
+        for (Libro libro : this.libros) {
+            if (libro.getTitulo().equals(titulo)) {
+                return libro;
+            }
+        }
+        return null;
+    }
+    
+    public void listarLibros() {
+        for (Libro libro : this.libros) {
+            System.out.println(libro.getTitulo() + " - " + libro.getAutor());
+        }
+    }
+}
+-----------------------------------------------------------------------------
+public static void main(String[] args) {
+    Biblioteca biblioteca = new Biblioteca();
+    
+    Libro libro1 = new Libro("El Quijote", "Miguel de Cervantes", "Editorial Planeta", 1605, "9788408111768");
+    biblioteca.agregarLibro(libro1);
+    
+    Libro libro2 = new Libro("Cien años de soledad", "Gabriel García Márquez", "Editorial Sudamericana", 1967, "9788466301860");
+    biblioteca.agregarLibro(libro2);
+    
+    biblioteca.listarLibros();
+}
